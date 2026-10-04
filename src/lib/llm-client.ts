@@ -58,12 +58,15 @@ Message to check: "${message}"`;
   try {
     const responseStr = await llmInferenceInstance.generateResponse(prompt);
     
-    // Extract JSON block in case the model adds conversational padding
+    // Extract JSON block in case the model adds conversational padding or multiple objects
     let cleanStr = responseStr.trim();
-    const startIdx = cleanStr.indexOf('{');
-    const endIdx = cleanStr.lastIndexOf('}');
-    if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
-      cleanStr = cleanStr.substring(startIdx, endIdx + 1);
+    
+    // The expected JSON is completely flat. We can safely extract the first { ... } block
+    // that does not contain any nested brackets. This prevents grabbing multiple objects
+    // if the model hallucinates extra text.
+    const match = cleanStr.match(/\{[^{}]*\}/);
+    if (match) {
+      cleanStr = match[0];
     }
     
     // Try to fix common unescaped quote issues before parsing (basic fallback)
