@@ -1,9 +1,17 @@
 <div align="center">
-  <img src="./public/icon.png" alt="Thik Achhe Icon" width="128" />
+  <img src="./public/web-app-manifest-192x192.png" alt="Thik Achhe Icon" width="128" />
 
   # Thik Achhe?
 
   <p>An offline SMS and WhatsApp scam checker powered by local AI.</p>
+
+  **[🔴 Live Demo (Vercel)](https://thik-achhe.devloper.xyz/)**
+
+  <br />
+
+  [![Watch Video Demo](https://img.youtube.com/vi/0lnH-yV-_rI/0.jpg)](https://youtube.com/shorts/0lnH-yV-_rI?si=HwY63dRm5kq8kJSc)
+
+  <br />
 
   <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-15-black?logo=next.js" alt="Next.js" /></a>
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript" alt="TypeScript" /></a>
