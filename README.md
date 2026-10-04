@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  <img src="./public/icon.png" alt="Thik Achhe Icon" width="128" />
 
-## Getting Started
+  # Thik Achhe?
 
-First, run the development server:
+  <p>An offline SMS and WhatsApp scam checker powered by local AI.</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-15-black?logo=next.js" alt="Next.js" /></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript" alt="TypeScript" /></a>
+  <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?logo=tailwind-css" alt="Tailwind CSS" /></a>
+  <a href="https://developers.google.com/mediapipe"><img src="https://img.shields.io/badge/MediaPipe-GenAI-orange" alt="MediaPipe" /></a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps"><img src="https://img.shields.io/badge/PWA-Enabled-green" alt="PWA Support" /></a>
+</div>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+"Thik Achhe?" is a privacy-first web application designed to help senior citizens verify whether a bank or lottery SMS is a scam. It runs completely offline using Google's MediaPipe Tasks GenAI to execute the gemma-4-E2B-it-web.litertlm model directly in the browser. 
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Because the model runs entirely on the client, sensitive information like bank account numbers or OTPs are never sent to any server.
 
-## Learn More
+## Features
 
-To learn more about Next.js, take a look at the following resources:
+* Offline AI Analysis: Runs the Gemma 4 E2B LiteRT model locally in the browser.
+* Multilingual Support: Interfaces and responses are available in English, Hindi, Bengali, and Nepali.
+* Hard Rules Engine: Instantly flags known scam patterns like short links and OTP requests before the AI even evaluates them.
+* PWA Enabled: Can be installed on mobile devices for quick access.
+* Accessible UI: Extremely large text, high contrast, and simple traffic-light results (Red, Yellow, Green).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technology Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* Framework: Next.js App Router
+* Styling: Tailwind CSS
+* AI Integration: @mediapipe/tasks-genai
+* Icons: lucide-react
 
-## Deploy on Vercel
+## Local Development
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To run the project locally on your machine:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Clone the repository.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server using the provided Windows script:
+   ```cmd
+   start.bat
+   ```
+   Alternatively, run:
+   ```bash
+   npm run dev
+   ```
+4. Open http://localhost:3000 in your browser.
+
+## Model Setup
+
+When launching the application for the first time, you will be prompted to select the model file. You must download the gemma-4-E2B-it-web.litertlm file and select it via the file picker. This file is then securely loaded into your browser memory for all subsequent checks during that session.
