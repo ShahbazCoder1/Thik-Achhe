@@ -47,11 +47,12 @@ export async function checkMessageLocal(message: string, language: string): Prom
 
   const prompt = `You are a scam detection assistant.
 Analyze the message and output your response strictly as a JSON object.
+You MUST write the "why" and "what_to_do" text in ${fullLangName}. Do NOT write in English.
 Do not use double quotes inside your explanation strings, use single quotes instead.
 Do not include any markdown formatting or introductory text.
 
 Example format:
-{"verdict": "red", "why": "Your explanation here in ${fullLangName}.", "what_to_do": "Your action here in ${fullLangName}."}
+{"verdict": "red", "why": "Explanation translated to ${fullLangName}", "what_to_do": "Action translated to ${fullLangName}"}
 
 Message to check: "${message}"`;
 
