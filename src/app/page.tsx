@@ -94,10 +94,7 @@ export default function Home() {
       if (ruleVerdict.isRedFlag) {
         if (finalVerdict.verdict !== "red") {
           finalVerdict.verdict = "red";
-          finalVerdict.why = `${ruleVerdict.reason} ${finalVerdict.why}`.trim();
-          finalVerdict.what_to_do = t.ruleFallbackAction;
-        } else {
-          finalVerdict.why = `${ruleVerdict.reason} ${finalVerdict.why}`.trim();
+          // We no longer inject hardcoded text. The explanation comes 100% from the AI.
         }
       }
 

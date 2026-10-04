@@ -30,6 +30,13 @@ export const translations = {
       red: "red",
       yellow: "yellow",
       green: "green"
+    },
+    rules: {
+      otp: "Never share OTP, PIN, or CVV. Banks will never ask for this.",
+      urgency: "Creating fake urgency about blocked accounts is a common scam tactic.",
+      link: "The message contains a shortened link, which is often used to hide dangerous websites.",
+      lottery: "Messages claiming you won a prize or lottery are almost always fake.",
+      kyc: "Banks don't send SMS links to complete KYC. Always go to the branch or official app."
     }
   },
   hi: {
@@ -61,6 +68,13 @@ export const translations = {
       red: "लाल",
       yellow: "पीला",
       green: "हरा"
+    },
+    rules: {
+      otp: "कभी भी OTP, PIN या CVV साझा न करें। बैंक इसके लिए कभी नहीं पूछेंगे।",
+      urgency: "ब्लॉक किए गए खातों के बारे में फर्जी चेतावनी बनाना एक आम घोटाला है।",
+      link: "संदेश में एक छोटा लिंक है, जिसका उपयोग अक्सर खतरनाक वेबसाइटों को छिपाने के लिए किया जाता है।",
+      lottery: "इनाम या लॉटरी जीतने का दावा करने वाले संदेश लगभग हमेशा फर्जी होते हैं।",
+      kyc: "बैंक KYC पूरा करने के लिए SMS लिंक नहीं भेजते हैं। हमेशा शाखा या आधिकारिक ऐप पर जाएं।"
     }
   },
   bn: {
@@ -92,6 +106,13 @@ export const translations = {
       red: "লাল",
       yellow: "হলুদ",
       green: "সবুজ"
+    },
+    rules: {
+      otp: "কখনও OTP, PIN বা CVV শেয়ার করবেন না। ব্যাঙ্ক কখনই এর জন্য জিজ্ঞাসা করবে না।",
+      urgency: "অ্যাকাউন্ট ব্লক হওয়ার বিষয়ে ভুয়ো সতর্কতা তৈরি করা একটি সাধারণ কেলেঙ্কারি।",
+      link: "বার্তায় একটি ছোট লিঙ্ক রয়েছে, যা প্রায়শই বিপজ্জনক ওয়েবসাইটগুলি লুকাতে ব্যবহৃত হয়।",
+      lottery: "পুরস্কার বা লটারি জেতার দাবি করা বার্তাগুলি প্রায় সবসময়ই ভুয়ো।",
+      kyc: "KYC সম্পূর্ণ করার জন্য ব্যাঙ্ক SMS লিঙ্ক পাঠায় না। সর্বদা শাখা বা অফিসিয়াল অ্যাপে যান।"
     }
   },
   ne: {
@@ -123,6 +144,13 @@ export const translations = {
       red: "रातो",
       yellow: "पहेँलो",
       green: "हरियो"
+    },
+    rules: {
+      otp: "कहिल्यै OTP, PIN, वा CVV सेयर नगर्नुहोस्। बैंकले यसको लागि कहिल्यै सोध्ने छैन।",
+      urgency: "ब्लक गरिएका खाताहरूको बारेमा नक्कली चेतावनी सिर्जना गर्नु एउटा सामान्य घोटाला हो।",
+      link: "सन्देशमा एउटा छोटो लिङ्क छ, जुन प्रायः खतरनाक वेबसाइटहरू लुकाउन प्रयोग गरिन्छ।",
+      lottery: "पुरस्कार वा लटरी जित्ने दाबी गर्ने सन्देशहरू लगभग सधैं नक्कली हुन्छन्।",
+      kyc: "KYC पूरा गर्न बैंकले SMS लिङ्क पठाउँदैन। सधैं शाखा वा आधिकारिक एपमा जानुहोस्।"
     }
   }
 };

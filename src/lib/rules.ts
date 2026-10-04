@@ -1,6 +1,6 @@
 export type RuleVerdict = {
   isRedFlag: boolean;
-  reason?: string;
+  reasonKey?: "otp" | "urgency" | "link" | "lottery" | "kyc";
 };
 
 export function evaluateRules(message: string): RuleVerdict {
@@ -10,7 +10,7 @@ export function evaluateRules(message: string): RuleVerdict {
   if (/(otp|pin|cvv|password)\b/i.test(message)) {
     return {
       isRedFlag: true,
-      reason: "Never share OTP, PIN, or CVV. Banks will never ask for this.",
+      reasonKey: "otp",
     };
   }
 
@@ -31,7 +31,7 @@ export function evaluateRules(message: string): RuleVerdict {
   if (hasUrgency && hasBankKeywords) {
     return {
       isRedFlag: true,
-      reason: "Creating fake urgency about blocked accounts is a common scam tactic.",
+      reasonKey: "urgency",
     };
   }
 
@@ -39,7 +39,7 @@ export function evaluateRules(message: string): RuleVerdict {
   if (/(bit\.ly|tinyurl\.com|t\.co|goo\.gl|is\.gd|tiny\.cc)/i.test(message)) {
     return {
       isRedFlag: true,
-      reason: "The message contains a shortened link, which is often used to hide dangerous websites.",
+      reasonKey: "link",
     };
   }
 
@@ -47,7 +47,7 @@ export function evaluateRules(message: string): RuleVerdict {
   if (/(lottery|prize|won|reward|cashback|lucky draw)\b/i.test(message)) {
     return {
       isRedFlag: true,
-      reason: "Messages claiming you won a prize or lottery are almost always fake.",
+      reasonKey: "lottery",
     };
   }
 
@@ -55,7 +55,7 @@ export function evaluateRules(message: string): RuleVerdict {
   if (/\bkyc\b/i.test(message) && /(update|complete|pending|link)/i.test(message)) {
     return {
       isRedFlag: true,
-      reason: "Banks don't send SMS links to complete KYC. Always go to the branch or official app.",
+      reasonKey: "kyc",
     };
   }
 

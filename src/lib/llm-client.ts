@@ -31,29 +31,43 @@ export async function initModel(modelUrl: string, onProgress?: (progress: number
   }
 }
 
+const languageMap: Record<string, string> = {
+  en: "English",
+  hi: "Hindi",
+  bn: "Bengali",
+  ne: "Nepali"
+};
+
 export async function checkMessageLocal(message: string, language: string): Promise<LocalOllamaResponse> {
   if (!llmInferenceInstance) {
     throw new Error("Model not initialized");
   }
 
+  const fullLangName = languageMap[language] || "English";
+
   const prompt = `You are a scam detection assistant.
-Respond ONLY with a JSON object. No markdown, no intro. 
-Format: {"verdict": "red/yellow/green", "why": "reason in ${language}", "what_to_do": "action in ${language}"}
+Analyze the message and output your response strictly as a JSON object.
+Do not use double quotes inside your explanation strings, use single quotes instead.
+Do not include any markdown formatting or introductory text.
+
+Example format:
+{"verdict": "red", "why": "Your explanation here in ${fullLangName}.", "what_to_do": "Your action here in ${fullLangName}."}
 
 Message to check: "${message}"`;
 
   try {
     const responseStr = await llmInferenceInstance.generateResponse(prompt);
     
-    // Extract JSON if model wrapped it in markdown or something
+    // Extract JSON block in case the model adds conversational padding
     let cleanStr = responseStr.trim();
-    if (cleanStr.startsWith('```json')) {
-      cleanStr = cleanStr.substring(7);
-      if (cleanStr.endsWith('```')) cleanStr = cleanStr.substring(0, cleanStr.length - 3);
-    } else if (cleanStr.startsWith('```')) {
-      cleanStr = cleanStr.substring(3);
-      if (cleanStr.endsWith('```')) cleanStr = cleanStr.substring(0, cleanStr.length - 3);
+    const startIdx = cleanStr.indexOf('{');
+    const endIdx = cleanStr.lastIndexOf('}');
+    if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
+      cleanStr = cleanStr.substring(startIdx, endIdx + 1);
     }
+    
+    // Try to fix common unescaped quote issues before parsing (basic fallback)
+    cleanStr = cleanStr.replace(/\\"/g, "'"); 
     
     const parsed = JSON.parse(cleanStr) as LocalOllamaResponse;
     if (!['red', 'yellow', 'green'].includes(parsed.verdict)) {
